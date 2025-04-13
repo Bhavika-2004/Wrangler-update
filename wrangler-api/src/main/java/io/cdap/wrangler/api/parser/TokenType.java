@@ -84,6 +84,17 @@ public enum TokenType implements Serializable {
    *   ColumnName[,ColumnName]*
    * </code>
    */
+  BYTE_SIZE,
+
+  /**
+   * Represents the enumerated type for time duration tokens like '5ms', '2s', etc.
+   */
+  TIME_DURATION,
+
+  /**
+   * Represents the enumerated type for the object of type {@code BoolList} type.
+   */
+  
   COLUMN_NAME_LIST,
 
   /**

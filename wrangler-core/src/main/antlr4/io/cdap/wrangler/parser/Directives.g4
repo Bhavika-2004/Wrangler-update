@@ -64,6 +64,8 @@ directive
     | stringList
     | numberRanges
     | properties
+    | byteSizeValue   
+    | timeDurationValue  
   )*?
   ;
 
@@ -140,8 +142,23 @@ numberRange
  ;
 
 value
- : String | Number | Column | Bool
+ : String
+ | Number
+ | Column
+ | Bool
+ | BYTE_SIZE
+ | TIME_DURATION
  ;
+  byteSizeArg : BYTE_SIZE;   //  Explicit rule for BYTE_SIZE
+  timeDurationArg : TIME_DURATION;  //  Explicit rule for TIME_DURATION
+
+byteSizeValue
+  : BYTE_SIZE
+  ;
+
+timeDurationValue
+  : TIME_DURATION
+  ;
 
 ecommand
  : '!' Identifier
@@ -311,3 +328,10 @@ fragment Int
 fragment Digit
  : [0-9]
  ;
+
+BYTE_SIZE     : Number BYTE_UNIT ;
+TIME_DURATION : Number TIME_UNIT ;
+
+fragment BYTE_UNIT : [kKmMgGtTpP][bB] ;
+fragment TIME_UNIT : 'ms' | 'sec' | 's' | 'min' | 'hour' | 'day' ;
+

@@ -1,0 +1,24 @@
+While working on the AggregateStats directive for Wrangler, I ran into several issues. To get through them, I used different prompts and learned how to debug and fix both logic and code-related problems. Here’s how I handled things:
+
+— Maven & Java Compatibility:
+At the beginning, I was getting strange Maven errors and didn't know why my build was failing. Using prompts, I realized my Java version (Java 12) wasn’t compatible with the project, which needed Java 8. I used a prompt to understand the error and then followed it to install Java 8 and set it up correctly.
+
+— Grammar Compilation Errors:
+While updating the Wrangler grammar file, I faced token recognition and compile errors. I used prompts to understand the ANTLR grammar syntax and got help for properly adding BYTE_SIZE and TIME_DURATION token types.
+
+— Logic Implementation in AggregateStats:
+I asked how to structure the directive so it would calculate totals or averages for byte sizes and time durations. Based on responses, I used the correct approach to parse units like KB, MB, and convert them into a base unit before aggregating. Prompts helped me design and correct the logic to support different units and aggregation types like "total" and "avg".
+
+— Testing Errors:
+Testing was tough because the test expected 1 row but the logic returned 2. Through prompts, I learned about different options: return one summary row (Option 1) or append aggregated values to each input row (Option 2). I picked Option 2. I then rewrote my test expectations and the logic accordingly. The prompts helped me understand how TestingRig worked and how it affects aggregation behavior.
+
+— Checkstyle and Formatting:
+When Checkstyle errors hit me (like missing braces in ifs and line length), I didn’t know the rules. Prompts helped me apply the correct formatting like always using braces and adding a new line at the end of files. I even got regex tips to fix bulk errors efficiently.
+
+— Debug Output and Assertion Fixes:
+Sometimes the directive ran fine but the test failed on expected vs actual values. Prompts helped me print debug output and rewrite my assertions accordingly. I also learned how to check specific rows for certain columns instead of assuming only one row would be returned.
+
+— Final Fixes:
+Towards the end, when everything seemed fine but the test still failed, I shared full files and got suggestions on resetting state variables before use and double-checking optional params. I got detailed help with filtering result rows in a clean way and confirmed the directive was doing exactly what it was supposed to.
+
+All in all, these prompts helped me debug Maven issues, get the logic right, clean the code, fix test assumptions, and pass everything. I also learned a lot about parsing, formatting, and writing meaningful tests.
